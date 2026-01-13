@@ -1,38 +1,39 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h1>{{ isLogin ? 'Login' : 'Register' }}</h1>
+      <div class="logo-section">
+        <img src="@/assets/kinetix-logo-red.svg" alt="KinetixPro Logo" class="logo" />
+      </div>
+      
+      <h1 class="login-title">Log in to KinetixPro</h1>
       
       <form @submit.prevent="handleSubmit">
         <div v-if="!isLogin" class="form-group">
-          <label for="username">Username</label>
           <input 
             type="text" 
             id="username" 
             v-model="formData.username" 
-            placeholder="Masukkan username"
+            placeholder="Username"
             required
           />
         </div>
 
         <div class="form-group">
-          <label for="email">Email</label>
           <input 
             type="email" 
             id="email" 
             v-model="formData.email" 
-            placeholder="Masukkan email"
+            placeholder="Email"
             required
           />
         </div>
 
         <div class="form-group">
-          <label for="password">Password</label>
           <input 
             type="password" 
             id="password" 
             v-model="formData.password" 
-            placeholder="Masukkan password"
+            placeholder="Password"
             required
           />
         </div>
@@ -46,28 +47,28 @@
         </div>
 
         <button type="submit" class="btn-submit" :disabled="loading">
-          {{ loading ? 'Loading...' : (isLogin ? 'Login' : 'Register') }}
+          {{ loading ? 'Loading...' : (isLogin ? 'Log in' : 'Sign up') }}
         </button>
       </form>
 
       <div class="toggle-mode">
-        <p v-if="isLogin">
-          Belum punya akun? 
-          <a @click="toggleMode" href="#">Register di sini</a>
-        </p>
-        <p v-else>
-          Sudah punya akun? 
-          <a @click="toggleMode" href="#">Login di sini</a>
-        </p>
+        <span v-if="isLogin">
+          Don't have an account? 
+          <a @click="toggleMode" href="#">Sign up for KinetixPro</a>
+        </span>
+        <span v-else>
+          Already have an account? 
+          <a @click="toggleMode" href="#">Log in</a>
+        </span>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import authService from '../services/auth';
+import { authService } from '../services/auth';
 
 const router = useRouter();
 const isLogin = ref(true);
@@ -111,15 +112,25 @@ const handleSubmit = async () => {
     }
 
     if (result.success) {
-      successMessage.value = isLogin.value ? 'Login berhasil!' : 'Register berhasil!';
-      setTimeout(() => {
-        router.push('/');
-      }, 1000);
+      if (isLogin.value) {
+        successMessage.value = 'Login successful!';
+        setTimeout(() => {
+          router.push('/');
+        }, 1000);
+      } else {
+        successMessage.value = 'Registration successful! Please login.';
+        setTimeout(() => {
+          isLogin.value = true;
+          formData.value.username = '';
+          formData.value.password = '';
+          successMessage.value = '';
+        }, 1500);
+      }
     } else {
-      errorMessage.value = result.message;
+      errorMessage.value = result.message || 'An error occurred';
     }
   } catch (error) {
-    errorMessage.value = 'Terjadi kesalahan. Silakan coba lagi.';
+    errorMessage.value = 'Something went wrong. Please try again.';
   } finally {
     loading.value = false;
   }
@@ -132,110 +143,166 @@ const handleSubmit = async () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #ffffff;
   padding: 20px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .login-card {
-  background: white;
-  padding: 50px;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
+  padding: 20px;
 }
 
-h1 {
+.logo-section {
   text-align: center;
-  margin-bottom: 40px;
-  color: #333;
-  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.login-title {
+  font-size: 31px;
+  font-weight: 700;
+  color: #0f1419;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  margin-bottom: 10px;
-  color: #555;
-  font-weight: 500;
-  font-size: 16px;
+  display: none;
 }
 
 input {
   width: 100%;
-  padding: 16px 18px;
-  border: 2px solid #e1e4e8;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 0.3s;
+  padding: 16px;
+  border: 1px solid #cfd9de;
+  border-radius: 4px;
+  font-size: 17px;
+  background: #ffffff;
+  color: #0f1419;
+  transition: border-color 0.2s;
   box-sizing: border-box;
 }
 
 input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #1d9bf0;
+  border-width: 2px;
+  padding: 15px;
+}
+
+input::placeholder {
+  color: #536471;
 }
 
 .error-message {
-  background: #fee;
-  color: #c33;
-  padding: 16px;
-  border-radius: 8px;
+  background: #fef1f1;
+  color: #f4212e;
+  padding: 12px;
+  border-radius: 4px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 15px;
+  border: 1px solid #f4212e;
 }
 
 .success-message {
-  background: #efe;
-  color: #3c3;
-  padding: 16px;
-  border-radius: 8px;
+  background: #e8f5e9;
+  color: #00ba7c;
+  padding: 12px;
+  border-radius: 4px;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 15px;
+  border: 1px solid #00ba7c;
 }
 
 .btn-submit {
   width: 100%;
-  padding: 18px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 14px;
+  background: #0f1419;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
+  border-radius: 24px;
+  font-size: 17px;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: background 0.2s;
+  margin-top: 10px;
 }
 
 .btn-submit:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: #272c30;
 }
 
 .btn-submit:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .toggle-mode {
   text-align: center;
-  margin-top: 24px;
-  color: #666;
-  font-size: 16px;
+  margin-top: 40px;
+  color: #536471;
+  font-size: 15px;
 }
 
 .toggle-mode a {
-  color: #667eea;
+  color: #1d9bf0;
   text-decoration: none;
-  font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .toggle-mode a:hover {
   text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 32px 24px;
+    margin: 16px;
+    max-width: none;
+  }
+  
+  .login-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+  }
+  
+  .login-card {
+    padding: 24px 16px;
+    margin: 8px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .login-title {
+    font-size: 20px;
+  }
+  
+  input {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  
+  .btn-submit {
+    padding: 14px;
+    font-size: 15px;
+  }
 }
 </style>

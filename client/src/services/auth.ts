@@ -10,9 +10,12 @@ export const authService = {
     async login(email: string, password: string): Promise<AuthResponse> {
         try {
             const response = await api.post('/auth/login', { email, password });
-            const { token, userId } = response.data;            
+            const { token, userId, username } = response.data;            
             localStorage.setItem('token', token);
             localStorage.setItem('userId', userId);
+            if (username) {
+                localStorage.setItem('username', username);
+            }
             return { success: true, data: response.data };
         } catch (error: any) {
             return {
@@ -29,9 +32,7 @@ export const authService = {
                 email, 
                 password 
             });
-            const { token, userId } = response.data;
-            localStorage.setItem('token', token);
-            localStorage.setItem('userId', userId);
+            // Don't auto-login after registration, user should login manually
             return { success: true, data: response.data };
         } catch (error: any) {
             return {
@@ -44,6 +45,7 @@ export const authService = {
     logout(): void {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
+        localStorage.removeItem('username');
     },
 
     isAuthenticated(): boolean {
@@ -56,6 +58,10 @@ export const authService = {
 
     getUserId(): string | null {
         return localStorage.getItem('userId');
+    },
+
+    getUsername(): string | null {
+        return localStorage.getItem('username');
     }
 };
 
