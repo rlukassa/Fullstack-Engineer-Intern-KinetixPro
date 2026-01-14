@@ -4,13 +4,13 @@ A modern full-stack blog/social media platform built with Vue.js and Express.js,
 
 ---
 
-## 🚀 LIVE DEPLOYMENT
+## LIVE DEPLOYMENT
 
 **Frontend (Netlify):** https://kinetixpro-fullstackdev.netlify.app/
 
 **GitHub Repository:** https://github.com/rlukassa/Fullstack-Engineer-Intern-KinetixPro
 
-**Note:** Backend is currently running on ngrok tunnel. For permanent deployment, backend needs to be deployed to Vercel or similar cloud platform.
+**Video Demo & Documentation:** https://drive.google.com/drive/u/0/folders/1kHBuep5eeYdrzKdjZ4TNMrbACvqe96p-
 
 ---
 
@@ -40,33 +40,33 @@ A modern full-stack blog/social media platform built with Vue.js and Express.js,
 #### Front-End Features
 | Feature | Status | Description |
 |---------|--------|-------------|
-| Home Page | ✅ | Display all blog posts with titles, descriptions, and publication dates |
-| Read More | ✅ | Each post links to full post detail page |
-| Post Detail Page | ✅ | View full blog post with edit/delete options (author only) |
-| Create New Post | ✅ | Form with title, content fields and input validation |
-| Edit Post | ✅ | Pre-filled form for editing own posts |
-| User Authentication | ✅ | Registration and login with JWT |
-| User Profile | ✅ | View profile page with list of own posts |
-| Comments | ✅ | Add, edit, delete comments on posts (author only for edit/delete) |
-| Responsive Design | ✅ | Mobile, tablet, and desktop support |
+| Home Page | YES | Display all blog posts with titles, descriptions, and publication dates |
+| Read More | YES | Each post links to full post detail page |
+| Post Detail Page | YES | View full blog post with edit/delete options (author only) |
+| Create New Post | YES | Form with title, content fields and input validation |
+| Edit Post | YES | Pre-filled form for editing own posts |
+| User Authentication | YES | Registration and login with JWT |
+| User Profile | YES | View profile page with list of own posts |
+| Comments | YES | Add, edit, delete comments on posts (author only for edit/delete) |
+| Responsive Design | YES | Mobile, tablet, and desktop support |
 
 #### Back-End Features
 | Feature | Status | Description |
 |---------|--------|-------------|
-| Post CRUD | ✅ | Create, Read, Update, Delete posts |
-| Comment CRUD | ✅ | Create, Read, Update, Delete comments |
-| JWT Authentication | ✅ | Register, Login with token-based auth |
-| Authorization | ✅ | Only authors can edit/delete their content |
-| Password Hashing | ✅ | Using bcrypt for secure password storage |
+| Post CRUD | YES | Create, Read, Update, Delete posts |
+| Comment CRUD | YES | Create, Read, Update, Delete comments |
+| JWT Authentication | YES | Register, Login with token-based auth |
+| Authorization | YES | Only authors can edit/delete their content |
+| Password Hashing | YES | Using bcrypt for secure password storage |
 
 #### Additional Features (Bonus Points)
 | Feature | Status | Description |
 |---------|--------|-------------|
-| Search Functionality | ✅ | Search posts by title or content with fuzzy matching |
-| Pagination | ✅ | Load limited posts per page with navigation |
-| Markdown Support | ✅ | Write and render posts with Markdown formatting |
-| Like/Bookmark System | ✅ | Engage with posts through likes and bookmarks |
-| Notifications | ✅ | Real-time notifications for likes, bookmarks, comments |
+| Search Functionality | YES | Search posts by title or content with fuzzy matching |
+| Pagination | YES | Load limited posts per page with navigation |
+| Markdown Support | YES | Write and render posts with Markdown formatting |
+| Like/Bookmark System | YES | Engage with posts through likes and bookmarks |
+| Notifications | YES | Real-time notifications for likes, bookmarks, comments |
 
 ---
 
@@ -90,7 +90,7 @@ A modern full-stack blog/social media platform built with Vue.js and Express.js,
 | Express.js | Web application framework |
 | TypeScript | Type-safe JavaScript development |
 | PostgreSQL | Relational database |
-| JWT | JSON Web Tokens for authentication |
+| **JWT (JSON Web Tokens)** | **Stateless authentication with token-based authorization** |
 | bcrypt | Password hashing |
 
 ### DevOps
@@ -752,11 +752,11 @@ $token = $response.token
 
 | Component | Platform | Status | URL |
 |-----------|----------|--------|-----|
-| **Frontend** | Netlify | ✅ LIVE | https://kinetixpro-fullstackdev.netlify.app |
-| **Backend** | ngrok (temp) | ✅ RUNNING | https://fancied-acanthine-brian.ngrok-free.dev |
-| **Database** | PostgreSQL (local) | ✅ RUNNING | localhost:5433 |
+| **Frontend** | Netlify | LIVE | https://kinetixpro-fullstackdev.netlify.app |
+| **Backend** | ngrok (temp) | RUNNING | https://fancied-acanthine-brian.ngrok-free.dev |
+| **Database** | PostgreSQL (local) | RUNNING | localhost:5433 |
 
-### Frontend Deployment (Netlify) ✅ COMPLETED
+### Frontend Deployment (Netlify) COMPLETED
 
 **What's configured:**
 - Automatic deployment on GitHub push to `main` branch
@@ -776,9 +776,9 @@ $token = $response.token
 **Remaining task:** Deploy backend to Vercel or similar platform for 24/7 uptime.
 
 **Current setup uses ngrok (temporary):**
-- ⚠️ URL changes on every restart
-- ⚠️ Requires local computer to be always on
-- ⚠️ Rate limited to 120 requests/minute on free tier
+- URL changes on every restart
+- Requires local computer to be always on
+- Rate limited to 120 requests/minute on free tier
 
 **Next steps for permanent backend:**
 1. Create Vercel account (vercel.com)
