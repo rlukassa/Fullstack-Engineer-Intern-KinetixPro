@@ -1,0 +1,8 @@
+[build]
+  builder = "DOCKERFILE"
+  dockerfilePath = "Dockerfile.prod"
+
+[deploy]
+  startCommand = "npm start"
+  healthcheckPath = "/api/posts"
+  healthcheckTimeout = 100

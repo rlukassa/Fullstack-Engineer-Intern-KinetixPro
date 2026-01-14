@@ -22,6 +22,15 @@ app.get('/', (req: Request, res: Response) => {
     });
 });
 
+// Health check endpoint for Docker/Kubernetes
+app.get('/api/health', (req: Request, res: Response) => {
+    res.status(200).json({
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 
 connectDB();
