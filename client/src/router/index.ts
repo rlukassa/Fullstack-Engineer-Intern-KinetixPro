@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import DetailPost from '../views/DetailPost.vue';
+import ProfileView from '../views/ProfileView.vue';
+import BookmarksView from '../views/BookmarksView.vue';
+import NotificationsView from '../views/NotificationsView.vue';
+import MessagesView from '../views/MessagesView.vue';
 import { authService } from '../services/auth';
 
 const router = createRouter({
@@ -22,6 +26,30 @@ const router = createRouter({
       path: '/post/:id',
       name: 'detail',
       component: DetailPost,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/profile/:id',
+      name: 'profile',
+      component: ProfileView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/bookmarks',
+      name: 'bookmarks',
+      component: BookmarksView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/notifications',
+      name: 'notifications',
+      component: NotificationsView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: MessagesView,
       meta: { requiresAuth: true }
     }
   ]
