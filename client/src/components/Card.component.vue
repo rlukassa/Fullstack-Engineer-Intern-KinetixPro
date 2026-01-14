@@ -111,7 +111,7 @@ const handleBookmark = async () => {
         <!-- Header -->
         <div class="post-header">
             <div class="avatar" @click.stop="goToProfile(post.author?._id)">
-                <img :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.username}`" alt="avatar" />
+                <img src="/default-avatar.svg" alt="avatar" />
             </div>
             <div class="user-info">
                 <span class="display-name" @click.stop="goToProfile(post.author?._id)">{{ post.author?.username || 'Unknown' }}</span>
@@ -228,6 +228,11 @@ const handleBookmark = async () => {
 
 .username:hover {
     text-decoration: underline;
+}
+
+.separator,
+.time {
+    color: #14171a;
 }
 
 .post-content {

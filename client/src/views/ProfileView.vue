@@ -82,7 +82,7 @@ onMounted(async () => {
           <!-- Profile Info -->
           <div class="profile-info-section">
             <div class="avatar-container">
-              <img :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`" :alt="user.username" class="profile-avatar" />
+              <img src="/default-avatar.svg" :alt="user.username" class="profile-avatar" />
             </div>
 
             <div class="profile-actions">

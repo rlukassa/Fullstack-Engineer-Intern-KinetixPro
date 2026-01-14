@@ -53,7 +53,7 @@ export const createComment = async (req: Request, res: Response): Promise<void> 
         );
 
         // Create notification for post author
-        await createNotification(postCheck.rows[0].author_id, parseInt(userId), parseInt(postId), 'comment');
+        await createNotification(postCheck.rows[0].author_id, parseInt(userId), parseInt(postId as string), 'comment');
 
         // Get comment with author info
         const commentWithAuthor = await pool.query(

@@ -270,7 +270,7 @@ onMounted(async () => {
                     <div class="post-main">
                         <div class="post-author">
                             <div class="avatar" @click="goToProfile(post.author?._id)">
-                                <img :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=${post.author?.username}`" alt="avatar" />
+                                <img src="/default-avatar.svg" alt="avatar" />
                             </div>
                             <div class="author-info">
                                 <span class="display-name" @click="goToProfile(post.author?._id)">{{ post.author?.username }}</span>
@@ -356,7 +356,7 @@ onMounted(async () => {
 
                     <div class="reply-composer">
                         <div class="composer-avatar">
-                            <img :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=user${currentUserId}`" alt="Your avatar" />
+                            <img src="/default-avatar.svg" alt="Your avatar" />
                         </div>
                         <div class="composer-input-wrapper">
                             <textarea 
@@ -383,7 +383,7 @@ onMounted(async () => {
                         <div v-else class="comments-list">
                             <div v-for="comment in comments" :key="comment._id" class="comment-item">
                                 <div class="comment-avatar" @click="goToProfile(comment.author?._id)">
-                                    <img :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.author?.username}`" alt="avatar" />
+                                    <img src="/default-avatar.svg" alt="avatar" />
                                 </div>
                                 <div class="comment-body">
                                     <div class="comment-header">

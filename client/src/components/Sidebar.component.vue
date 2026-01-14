@@ -102,9 +102,7 @@ const handleTweet = () => {
   <div class="sidebar" :class="{ 'sidebar-collapsed': isCollapsed }">
     <div class="sidebar-header">
       <div class="logo-container">
-        <svg viewBox="0 0 24 24" class="logo-icon">
-          <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
+        <img src="@/assets/kinetix-logo-red.svg" alt="KinetixPro" class="logo-icon" />
       </div>
     </div>
 
@@ -189,24 +187,16 @@ const handleTweet = () => {
 }
 
 .logo-container {
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
   cursor: pointer;
-}
-
-.logo-container:hover {
-  background-color: rgba(29, 155, 240, 0.1);
+  padding: 8px 0;
 }
 
 .logo-icon {
-  width: 28px;
-  height: 28px;
-  color: #0f1419;
+  width: 140px;
+  height: 115px;
 }
 
 .sidebar-nav {

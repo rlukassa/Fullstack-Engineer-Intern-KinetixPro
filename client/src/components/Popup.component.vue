@@ -53,7 +53,7 @@ const handleBackdropClick = () => {
           <!-- Body -->
           <div class="popup-body">
             <div class="popup-icon" :class="`icon-${type}`">
-              <i v-if="type === 'danger'" class="fa-solid fa-link"></i>
+              <i v-if="type === 'danger'" class="fa-solid fa-circle-xmark"></i>
               <i v-else-if="type === 'warning'" class="fa-solid fa-code"></i>
               <i v-else-if="type === 'success'" class="fas fa-check-circle"></i>
               <i v-else class="fas fa-info-circle"></i>

@@ -1,14 +1,11 @@
--- KinetixPro Seed Data
--- Sample data untuk testing
--- Default password untuk semua users: password123
+-- data Sample for testing
+-- Default password for these users (inject): password123
 
--- Insert sample users
 INSERT INTO users (username, email, password) VALUES 
-('john_doe', 'john@example.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.'),
-('jane_smith', 'jane@example.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.'),
-('mike_wilson', 'mike@example.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.');
+('lukas', 'lukas@gmail.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.'),
+('kinetixpro', 'kinetixpro@gmail.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.'),
+('talentgrowth', 'talentgrowth@gmail.com', '$2b$10$apeyKy9kZoKtHvzQW9YX8OR/lkDSjqxd6E0xdgoEzEJkWIu.RCSt.');
 
--- Insert sample posts
 INSERT INTO posts (title, caption, image, likes, author_id) VALUES 
 ('Welcome to KinetixPro', 'This is my first post on KinetixPro! Excited to share my journey.', 'https://picsum.photos/600/400?random=1', 42, 1),
 ('Beautiful Sunset', 'Captured this amazing sunset today 🌅', 'https://picsum.photos/600/400?random=2', 128, 1),
@@ -17,7 +14,6 @@ INSERT INTO posts (title, caption, image, likes, author_id) VALUES
 ('Weekend Vibes', 'Enjoying the weekend with family 👨‍👩‍👧‍👦', 'https://picsum.photos/600/400?random=4', 93, 3),
 ('New Project', 'Excited to announce my new project launching soon! 🚀', NULL, 67, 3);
 
--- Insert sample comments
 INSERT INTO comments (content, post_id, user_id) VALUES 
 ('Great post! Love it!', 1, 2),
 ('This is amazing! Thanks for sharing.', 1, 3),
@@ -27,7 +23,6 @@ INSERT INTO comments (content, post_id, user_id) VALUES
 ('Have a great weekend!', 5, 1),
 ('Can''t wait to see what you''ve built!', 6, 2);
 
--- Display inserted data count
 SELECT 'Data seeded successfully!' AS status;
 SELECT COUNT(*) AS total_users FROM users;
 SELECT COUNT(*) AS total_posts FROM posts;
